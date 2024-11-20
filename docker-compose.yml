@@ -1,0 +1,14 @@
+services:
+  service1:
+    build: ./service1
+    ports:
+      - "3000:3000"
+    environment:
+      - SERVICE_2_URL=http://service2:3001/api/info
+    depends_on:
+      - service2
+
+  service2:
+    build: ./service2
+    ports:
+      - "3001:3001"
